@@ -1,6 +1,6 @@
 'use client'
 
-import { createToDoDirectly } from '@/actions';
+import { createToDoDirectly } from 'actions';
 
 export default function Button({ children }) {
   return <button onClick={async () => {

@@ -1,7 +1,7 @@
 'use client'
  
 import { useFormStatus } from 'react-dom'
-import { createToDo } from '@/actions/form3';
+import { createToDo } from 'actions/form3';
 import React from 'react';
 
 const initialState = {

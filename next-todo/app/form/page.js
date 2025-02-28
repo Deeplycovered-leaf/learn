@@ -1,4 +1,4 @@
-import { findToDos, createToDo } from '@/actions';
+import { findToDos, createToDo } from 'actions';
 import Button from './button';
 
 export default async function Page() {

@@ -1,4 +1,4 @@
-import { findToDos } from '@/actions';
+import { findToDos } from 'actions';
 import AddToDoForm from './form';
 
 export default async function Page() {
