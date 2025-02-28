@@ -1,8 +1,9 @@
-import { middleware1, middleware2 } from "middlewares"
+import { middleware1, middleware2 ,language} from "middlewares"
 
 export async function middleware(request) {
   await middleware1(request)
   await middleware2(request)
+  await language(request)
 }
 
 export const config = {
