@@ -1,12 +1,11 @@
-import { Note } from "@/types"
-import dayjs from "dayjs"
+import { getAllNotes } from "@/lib/redis"
+import SidebarNoteItem from "./SidebarNoteItem"
 
-type Props = {
-  notes: Record<string, string>
-}
-
-export default async function SidebarNoteList(props: Props) {
-  const arr = Object.entries(props.notes)
+export default async function SidebarNoteList() {
+  const sleep = (ms:number) => new Promise(r => setTimeout(r, ms));
+  await sleep(1000);
+  const notes:Record<string, string> =  await getAllNotes() 
+  const arr = Object.entries(notes)
 
   if (arr.length === 0) {
     return <div className="notes-empty">
@@ -16,12 +15,9 @@ export default async function SidebarNoteList(props: Props) {
 
   return <ul>
     {arr.map(([noteId, note]) => {
-      const { title, updateTime } = JSON.parse(note) as Note;
-
       return <li key={noteId}>
         <header className="notes-list">
-          <strong>{title}</strong>
-          <small>{dayjs(updateTime).format('YYYY-MM-DD hh:mm:ss')}</small>
+          <SidebarNoteItem noteId={noteId} note={JSON.parse(note)} />
         </header>
       </li>
     })}
