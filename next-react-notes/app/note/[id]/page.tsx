@@ -1,5 +1,6 @@
 import Note from '@/components/Note'
 import {getNote} from '@/lib/redis';
+import { sleep } from '@/utils';
 
 type Props = {
   params: Record<string, string>
@@ -11,7 +12,6 @@ export default async function Page(props: Props) {
   const note = await getNote(noteId)
 
   // 为了让 Suspense 的效果更明显
-  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
   await sleep(1000);
 
   if (note == null) {

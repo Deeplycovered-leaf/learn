@@ -3,8 +3,8 @@
 import { redirect } from 'next/navigation'
 import { addNote, updateNote, delNote } from '@/lib/redis';
 import { z } from 'zod';
+import { sleep } from '@/utils';
 
-const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
 const schema = z.object({
   title: z.string(),
